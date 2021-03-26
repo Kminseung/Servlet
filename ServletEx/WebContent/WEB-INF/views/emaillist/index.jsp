@@ -1,7 +1,5 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.bit.servlet.dao.EmailVo"%>
-<%@ page import="com.bit.servlet.dao.EmailDao"%>
-<%@ page import="com.bit.servlet.dao.EmailDaoOrclImpl"%>
+<%@page import="com.bit.servlet.dao.EmailVo" %>
+<%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,15 +10,13 @@
 </head>
 <body>
 	<h1>메일링 리스트(Model 2)</h1>
+	<%	// 컨트롤러에서 속성으로 추가해준 리스트 객체를 꺼내옴
+	// 다운 캐스팅 필요
+	List<EmailVo> list = (List<EmailVo>)request.getAttribute("list");
 	
-	<%	// DAO 불러오기
-	EmailDao dao = new EmailDaoOrclImpl();
-	
-	// 목록 받아오기
-	List<EmailVo> list = dao.getList();
-	
+	// 루프
 	for(EmailVo vo : list) {
-		// 출력 %>
+	%>
 		<!-- 정보 테이블 -->
 		<table border=1>
 			<tr>
@@ -38,7 +34,8 @@
 			<!-- 삭제 버튼 -->
 			<tr>
 				<td colspan="2">
-				<form action="delete.jsp">
+				<form action="<%= request.getContextPath() %>/el">
+					<input typr="hidden" name="a" value="delete" />
 					<!-- 게시물의 no(PK) -->
 					<input type="hidden" name="no" value="<%= vo.getNo() %>"/>
 					<!-- 전송 버튼 -->
@@ -53,7 +50,7 @@
 	%>
 	
 	<p>
-		<a href="form.jsp">메일링 리스트 가입</a>
+		<a href="<%= request.getContextPath() %>/el?a=form">메일링 리스트 가입(MVC)</a>
 	</p>
 </body>
 </html>
