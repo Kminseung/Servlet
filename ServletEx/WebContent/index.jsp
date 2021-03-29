@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +8,15 @@
 </head>
 <body>
 	<h1>Hello Web World</h1>
+	
+	<ul>
+		<li><a href="<%= request.getContextPath() %>/users?a=joinform">회원가입</a></li>
+	</ul>
+	
+	<!-- 
 	<h3>Static HTML Page</h3>
 	<p>이것은 정적 HTML로 작성된 문서</p>
+	-->
 	
 	<!-- img 태그 : 그림 삽입 -->
 	<!--  img src="파일위치", alt: 대체 텍스트  -->
