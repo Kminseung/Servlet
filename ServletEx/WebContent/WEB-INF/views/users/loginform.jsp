@@ -11,7 +11,7 @@
 	
 	<form method="POST"
 		action="<%= request.getContextPath() %>/users">
-		<input type="hidden" name="name" value="Login" />
+		<input type="hidden" name="a" value="login">
 		<label for="email">이메일</label>
 		<input name="email" id="email" type="text" /></br>
 		
