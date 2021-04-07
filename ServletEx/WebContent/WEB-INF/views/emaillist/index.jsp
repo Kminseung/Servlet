@@ -8,6 +8,19 @@
 <head>
 <meta charset="UTF-8">
 <title>메일링 리스트 확인</title>
+
+<script>
+function confirmDelete(form) {
+	// 폼을 확인
+	// console.log(form);
+	// confirm 창 띄우기
+	var result = confirm("삭제하시겠습니까?");
+	// submit 이벤트 결과가 true -> 전송
+	// 			falase -> 전송 취소
+	return result;
+}
+</script>
+
 </head>
 <body>
 	<h1>메일링 리스트(Model 2)</h1>
@@ -30,7 +43,7 @@
 		<!-- 삭제 버튼 -->
 		<tr>
 			<td colspan="2">
-				<form action="<c:url value="/el"/>">
+				<form action="<c:url value="/el" onsubmit="return confirmDelete(this)" />">
 					<input type="hidden" name="a" value="delete" />
 					<!-- 게시물의 no(PK) -->
 					<input type="hidden" name="no" value="${ vo.no }"/>
